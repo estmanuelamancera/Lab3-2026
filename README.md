@@ -23,4 +23,83 @@ Posteriormente, los archivos de audio fueron importados en Python para su proces
 
 A partir de este análisis se calcularon diferentes características espectrales de cada señal de voz, incluyendo frecuencia fundamental, frecuencia media, brillo (centroide espectral) e intensidad o energía. Estos parámetros permitieron describir el comportamiento de cada grabación y sirvieron como base para el análisis y comparación de las voces en las siguientes partes del laboratorio.
 
+# CÓDIGO
+## Conectar Google Drive
+```
+# ---------------------------------------------------------
+# 1. CONECTAR GOOGLE DRIVE
+# ---------------------------------------------------------
+from google.colab import drive
+drive.mount('/content/drive')
+```
+Permite que Google Colab acceda a Google Drive.
+## Importar librerías
+```
+# ---------------------------------------------------------
+# 2. IMPORTAR LIBRERIAS
+# ---------------------------------------------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.io import wavfile
+from scipy.fft import fft, fftfreq
+import pandas as pd
+```
+Las librerias permiten trabajar con vectores hacer cálculos matemáticos, manejar señales digitales, graficar señales y leer archivos de audio.
+La funcion scipy.fft sirve para calcular la Transformada de Fourier,convierte señal en tiempo en señal en frecuencia, etso permite saber que frecuencia tiene la voz.
+## Importar librerías
+```
+# ---------------------------------------------------------
+# 3. RUTA (TUS AUDIOS ESTAN EN MI UNIDAD)
+# ---------------------------------------------------------
+ruta = "/content/drive/MyDrive/"
+```
+Aquí se define la ubicación donde se encuentran almacenados los archivos de audio dentro de Google Drive. Esta ruta se utiliza posteriormente para acceder a cada uno de los archivos .wav que contienen las grabaciones de voz realizadas durante el laboratorio.
+## Lista archivos de audio 
+```
+# ---------------------------------------------------------
+# 4. ARCHIVOS DE AUDIO
+# ---------------------------------------------------------
+archivos = [
+"hombre1.wav",
+"hombre2.wav",
+"hombre3.wav",
+"mujer1.wav",
+"mujer2.wav",
+"mujer3.wav"
+]
+```
+En esta sección se crea una lista con los nombres de los archivos de audio que serán analizados. Cada archivo corresponde a una grabación de voz realizada durante la práctica. Esta lista permite automatizar el análisis de las señales mediante un ciclo que procesa cada archivo de forma secuencial.
+## Función de análisis de la señal
+```
+# ---------------------------------------------------------
+# 5. FUNCION ANALISIS DE VOZ
+# ---------------------------------------------------------
+def analizar_voz(signal, fs):
+
+    N = len(signal)
+
+    # FFT
+    yf = fft(signal)
+    xf = fftfreq(N, 1/fs)
+
+    magnitud = np.abs(yf)
+
+    # solo frecuencias positivas
+    xf = xf[:N//2]
+    magnitud = magnitud[:N//2]
+
+    # frecuencia fundamental
+    f0 = xf[np.argmax(magnitud)]
+
+    # frecuencia media
+    f_media = np.sum(xf * magnitud) / np.sum(magnitud)
+
+    # brillo
+    brillo = f_media
+
+    # energia
+    energia = np.sum(signal**2) / N
+
+    return f0, f_media, brillo, energia, xf, magnitud
+
 ```
