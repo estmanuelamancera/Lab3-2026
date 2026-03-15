@@ -25,7 +25,7 @@ A partir de este análisis se calcularon diferentes características espectrales
 
 # Diagrama
 <img width="2000" height="5000" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/INICIO%20(1).png" />
-
+<img width="2000" height="5000" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/INICIO%20(2).png" />
 
 # CÓDIGO
 ## Conectar Google Drive
