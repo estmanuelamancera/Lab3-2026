@@ -103,3 +103,92 @@ def analizar_voz(signal, fs):
     return f0, f_media, brillo, energia, xf, magnitud
 
 ```
+En este bloque se define una función encargada de realizar el análisis espectral de cada señal de voz. Primero se obtiene el número total de muestras de la señal. Luego se aplica la Transformada Rápida de Fourier (FFT) para convertir la señal del dominio del tiempo al dominio de la frecuencia. A partir del espectro obtenido se calcula la magnitud de cada componente frecuencial, considerando únicamente las frecuencias positivas.
+
+Posteriormente se determina la frecuencia fundamental, identificando la frecuencia asociada al mayor valor de magnitud del espectro. También se calcula la frecuencia media, que corresponde al promedio ponderado de las frecuencias según su magnitud. Este valor se utiliza como una aproximación del brillo o centroide espectral. Finalmente, se calcula la energía de la señal, definida como el promedio del cuadrado de la amplitud de la señal. La función devuelve estos parámetros junto con los vectores de frecuencia y magnitud necesarios para generar las gráficas.
+
+## Procesamiento de los archivos de audio
+```
+# ---------------------------------------------------------
+# 6. ANALIZAR LOS AUDIOS
+# ---------------------------------------------------------
+resultados = []
+
+for archivo in archivos:
+
+    fs, signal = wavfile.read(ruta + archivo)
+
+    # convertir a mono si es estereo
+    if len(signal.shape) > 1:
+        signal = signal[:,0]
+
+    # normalizar
+    signal = signal / np.max(np.abs(signal))
+
+    tiempo = np.arange(len(signal)) / fs
+
+    f0, f_media, brillo, energia, xf, magnitud = analizar_voz(signal, fs)
+
+    resultados.append([
+        archivo,
+        f0,
+        f_media,
+        brillo,
+        energia
+    ])
+
+    # colores
+    if "mujer" in archivo:
+        color = "fuchsia"
+    else:
+        color = "blue"
+```
+En esta sección se realiza el procesamiento de cada una de las grabaciones de voz. Primero se crea una lista para almacenar los resultados obtenidos. Luego, mediante un ciclo, el programa recorre cada archivo de audio y lo carga utilizando la función de lectura de archivos .wav. Si la grabación es estéreo, se selecciona un solo canal para convertirla en una señal mono. Posteriormente, la señal se normaliza para mantener una escala de amplitud uniforme entre todas las grabaciones. Finalmente, se calcula el vector de tiempo y se aplica la función de análisis espectral para obtener las características de la señal, las cuales se almacenan en la lista de resultados.
+## Gráfica de la señal en el dominio del tiempo
+```
+# -----------------------------------------------------
+    # GRAFICA DOMINIO DEL TIEMPO
+    # -----------------------------------------------------
+    plt.figure(figsize=(10,4))
+    plt.plot(tiempo, signal, color=color)
+    plt.title("Señal de voz en el tiempo - " + archivo)
+    plt.xlabel("Tiempo (segundos)")
+    plt.ylabel("Amplitud")
+    plt.grid()
+    plt.show()
+```
+Este bloque genera la representación de cada señal de voz en el dominio del tiempo. La gráfica muestra cómo varía la amplitud de la señal a lo largo del tiempo, lo cual permite observar la forma de onda de la voz, su duración aproximada y posibles pausas o irregularidades en la grabación.
+## Gráfica del espectro de frecuencias
+```
+# -----------------------------------------------------
+    # GRAFICA FFT
+    # -----------------------------------------------------
+    plt.figure(figsize=(10,4))
+    plt.plot(xf, magnitud, color=color)
+    plt.title("Espectro de frecuencias (FFT) - " + archivo)
+    plt.xlabel("Frecuencia (Hz)")
+    plt.ylabel("Magnitud")
+    plt.grid()
+    plt.show()
+```
+En esta sección se genera la representación de la señal en el dominio de la frecuencia. La gráfica corresponde al espectro de magnitud obtenido mediante la Transformada de Fourier. Este espectro permite visualizar cómo se distribuye la energía de la señal en diferentes frecuencias y facilita la identificación de componentes dominantes como la frecuencia fundamental.
+
+## Organización final de los resultados
+```
+# ---------------------------------------------------------
+# 7. TABLA FINAL
+# ---------------------------------------------------------
+tabla = pd.DataFrame(
+    resultados,
+    columns=[
+        "Archivo",
+        "Frecuencia Fundamental (Hz)",
+        "Frecuencia Media (Hz)",
+        "Brillo",
+        "Intensidad (Energia)"
+    ]
+)
+
+```
+Finalmente, los valores calculados para cada grabación se organizan en una tabla utilizando la librería Pandas. Esta tabla contiene el nombre del archivo analizado y los parámetros espectrales calculados: frecuencia fundamental, frecuencia media, brillo e intensidad. La presentación de los resultados en forma tabular facilita la comparación entre las distintas señales de voz y sirve como base para el análisis posterior entre voces masculinas y femeninas.
+
