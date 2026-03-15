@@ -196,6 +196,15 @@ tabla = pd.DataFrame(
 Finalmente, los valores calculados para cada grabación se organizan en una tabla utilizando la librería Pandas. Esta tabla contiene el nombre del archivo analizado y los parámetros espectrales calculados: frecuencia fundamental, frecuencia media, brillo e intensidad. La presentación de los resultados en forma tabular facilita la comparación entre las distintas señales de voz y sirve como base para el análisis posterior entre voces masculinas y femeninas.
 
 # GRAFICAS
-<img width="600" height="500" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/hombrea1.png" />
-
-
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/hombrea1.png" />
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/hombrea2.png" />
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/hombreb1.png" />
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/hombreb2.png" />
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/hombrec1.png" />
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/hombrec2.png" />
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/mujera1.png" />
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/mujera2.png" />
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/mujerb1.png" />
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/mujerb2.png" />
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/mujerc1.png" />
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/mujerc2.png" />
