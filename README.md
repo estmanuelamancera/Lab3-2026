@@ -23,6 +23,9 @@ Posteriormente, los archivos de audio fueron importados en Python para su proces
 
 A partir de este análisis se calcularon diferentes características espectrales de cada señal de voz, incluyendo frecuencia fundamental, frecuencia media, brillo (centroide espectral) e intensidad o energía. Estos parámetros permitieron describir el comportamiento de cada grabación y sirvieron como base para el análisis y comparación de las voces en las siguientes partes del laboratorio.
 
+# Diagrama
+
+
 # CÓDIGO
 ## Conectar Google Drive
 ```
