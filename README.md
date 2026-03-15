@@ -208,3 +208,6 @@ Finalmente, los valores calculados para cada grabación se organizan en una tabl
 <img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/mujerb2.png" />
 <img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/mujerc1.png" />
 <img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/mujerc2.png" />
+
+# TABLA RESULTADOS PARTE A
+<img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/tabla1.png" />
