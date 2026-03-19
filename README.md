@@ -542,4 +542,3 @@ print(f"Tu Shimmer Absoluto es: {shimmer_abs_final:.4f} dB")
 
 SHIMMER ABSOLUTO: 0.4989 dB
 SHIMMER RELATIVO: 5.7470 %
-========================================
