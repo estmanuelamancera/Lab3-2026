@@ -221,8 +221,9 @@ Posteriormente, se evalúan las variaciones temporales y de amplitud de las señ
 
 ### Diseño del filtro pasa banda para hombres
 
-!(PB HOMBRE)[]
+![PB HOMBRE](https://github.com/estmanuelamancera/Lab3-2026/blob/main/WhatsApp%20Image%202026-03-17%20at%201.12.00%20PM.jpeg?raw=true)
 
+![PB HOMBRE]()
 ### Diseño del filtro pasa banda para mujeres
 
 !(PB MUJER)[]
