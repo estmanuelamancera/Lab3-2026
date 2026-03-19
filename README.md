@@ -537,7 +537,8 @@ print(f"Tu Shimmer Absoluto es: {shimmer_abs_final:.4f} dB")
 
 ![Shimmer](https://github.com/estmanuelamancera/Lab3-2026/blob/main/grafica%20shimmer.png?raw=true)
 
-![Variacion amplitud]()
+![Variacion amplitud](https://github.com/estmanuelamancera/Lab3-2026/blob/main/variacion%20amplitud%20shimmer.png?raw=true)
+
 ========================================
 
 SHIMMER ABSOLUTO: 0.4989 dB
