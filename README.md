@@ -544,7 +544,10 @@ SHIMMER ABSOLUTO: 0.4989 dB
 SHIMMER RELATIVO: 5.7470 %
 
 #### Resultados Hombre y Mujer
-Sujeto,Jitter Absoluto,Jitter Relativo (%),Shimmer Absoluto (dB),Shimmer Relativo (%)
-Hombre ,0.000045 s,0.5472 %,0.4989 dB,5.7470 %
-Mujer ,0.064180 s,157.6787 %,1.3133 dB,16.0415 %
+### 📊 Resultados del Análisis Acústico (Jitter y Shimmer)
+
+| Sujeto | Jitter Absoluto (s) | Jitter Relativo (%) | Shimmer Absoluto (dB) | Shimmer Relativo (%) |
+| :--- | :---: | :---: | :---: | :---: |
+| **Hombre ** | 0.000045 | 0.5472% | 0.4989 | 5.7470% |
+| **Mujer ** | 0.064180 | 157.6787% | 1.3133 | 16.0415% |
 
