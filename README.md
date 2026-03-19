@@ -445,4 +445,96 @@ JITTER ABSOLUTO: 0.000045 segundos
 JITTER RELATIVO: 0.5472 %
 FRECUENCIA FUNDAMENTAL: 120.66 Hz
 
+### Medición del shimmer 
+### Código captura shimmer
+
+```python
+# --- CÁLCULO DE SHIMMER ---
+
+# 1. Obtener las amplitudes Ai de cada pico detectado
+# y_norm[picos] nos da la altura de cada punto rojo
+Ai = y_norm[picos]
+
+# 2. Shimmer Absoluto (en dB)
+# Comparamos la razón entre amplitudes consecutivas en escala logarítmica
+shimmer_db = np.mean(np.abs(20 * np.log10(Ai[1:] / Ai[:-1])))
+
+# 3. Shimmer Relativo (%)
+# Diferencia promedio de amplitud entre picos consecutivos
+diff_amp = np.mean(np.abs(np.diff(Ai)))
+shimmer_rel = (diff_amp / np.mean(Ai)) * 100
+
+# --- RESULTADOS ---
+print(f"{' CÁLCULOS DE SHIMMER ':=^40}")
+print(f"Amplitudes detectadas (Ai): {Ai[:5]}") # Primeras 5 alturas
+print("-" * 40)
+print(f"SHIMMER ABSOLUTO: {shimmer_db:.4f} dB")
+print(f"SHIMMER RELATIVO: {shimmer_rel:.4f} %")
+print(f"{'':=^40}")
+
+# --- 5. GRÁFICA DE VALIDACIÓN DE SHIMMER ---
+plt.figure(figsize=(12, 5))
+
+# Graficamos la señal de fondo en gris para que resalten los picos
+t_eje = np.linspace(t_inicio, t_fin, len(y_norm))
+plt.plot(t_eje, y_norm, color='lightgray', alpha=0.5, label='Señal de Voz')
+
+# Graficamos los picos detectados
+plt.plot(t_eje[picos], Ai, 'ro', markersize=8, label='Amplitudes (Ai)')
+
+# Dibujamos la línea que une los picos (Envolvente de amplitud)
+plt.plot(t_eje[picos], Ai, 'r--', alpha=0.6, label='Variación de Amplitud (Shimmer)')
+
+# Configuración de la gráfica
+plt.title(f'Análisis de Shimmer | Shimmer Rel: {shimmer_rel:.4f}% | Shimmer Abs: {shimmer_db:.4f} dB', fontsize=14)
+plt.xlabel('Tiempo (segundos)')
+plt.ylabel('Amplitud Normalizada')
+plt.legend(loc='upper right')
+plt.grid(True, linestyle=':', alpha=0.6)
+
+# Mantenemos el zoom para ver el detalle de los primeros ciclos
+plt.xlim(t_inicio, t_inicio + 0.1)
+plt.ylim(0, 1.1) # Enfocamos en la parte positiva para ver las amplitudes
+
+plt.tight_layout()
+plt.show()
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 1. Extraer las amplitudes de los picos que ya detectamos
+Ai = y_norm[picos]
+
+# 2. Calcular la diferencia absoluta en dB entre picos consecutivos
+# Fórmula: |20 * log10(A_{i+1} / A_i)|
+shimmer_ciclo_a_ciclo_db = np.abs(20 * np.log10(Ai[1:] / Ai[:-1]))
+
+# 3. El Shimmer Absoluto final es el promedio de esas diferencias
+shimmer_abs_final = np.mean(shimmer_ciclo_a_ciclo_db)
+
+# --- GRAFICAR EL SHIMMER ABSOLUTO ---
+plt.figure(figsize=(10, 5))
+
+# Graficamos las diferencias de cada par de picos
+plt.stem(range(len(shimmer_ciclo_a_ciclo_db)), shimmer_ciclo_a_ciclo_db,
+         linefmt='g-', markerfmt='go', basefmt='k-')
+
+# Dibujamos una línea roja que represente el promedio (el valor final)
+plt.axhline(y=shimmer_abs_final, color='r', linestyle='--',
+            label=f'Shimmer Abs Promedio: {shimmer_abs_final:.4f} dB')
+
+plt.title('Variación de Amplitud Ciclo a Ciclo (Shimmer Absoluto)')
+plt.xlabel('Número de transición entre picos')
+plt.ylabel('Diferencia de Amplitud (dB)')
+plt.legend()
+plt.grid(alpha=0.3)
+plt.show()
+
+print(f"Tu Shimmer Absoluto es: {shimmer_abs_final:.4f} dB")
+
+```
+### Resultados obtenidos 
+
+![]()
+![]()
 
