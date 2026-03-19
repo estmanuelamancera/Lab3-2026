@@ -330,6 +330,6 @@ print(f"{'':=^40}")
 
 ### Filtro señal femenina
 
-![Mujer]()
+![Mujer](https://github.com/estmanuelamancera/Lab3-2026/blob/main/filtro%20mujer.png?raw=true)
 
 
