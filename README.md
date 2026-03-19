@@ -324,3 +324,12 @@ print(f"{'':=^40}")
 
 ```
 
+### Filtro señal masculina
+
+![Hombre]()
+
+### Filtro señal femenina
+
+![Mujer]()
+
+
