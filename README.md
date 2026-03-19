@@ -439,7 +439,7 @@ print(f"{'':=^40}")
 Primeros 5 periodos (Ti): [0.00834467 0.00834467 0.00825397 0.00829932 0.00823129] segundos
 Número total de periodos: 8
 
-----------------------------------------
+==================================
 JITTER ABSOLUTO: 0.000045 segundos
 JITTER RELATIVO: 0.5472 %
 FRECUENCIA FUNDAMENTAL: 120.66 Hz
