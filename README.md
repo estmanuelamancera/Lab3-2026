@@ -326,7 +326,7 @@ print(f"{'':=^40}")
 
 ### Filtro señal masculina
 
-![Hombre]()
+![Hombre](https://github.com/estmanuelamancera/Lab3-2026/blob/main/filtro%20en%20hombre%20.png?raw=true)
 
 ### Filtro señal femenina
 
