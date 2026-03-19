@@ -211,3 +211,115 @@ Finalmente, los valores calculados para cada grabación se organizan en una tabl
 
 # TABLA RESULTADOS PARTE A
 <img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/tabla1.png" />
+
+### PARTE B
+
+En esta sección se realiza un análisis detallado de la estabilidad de la voz a partir de las grabaciones obtenidas en la Parte A. Se selecciona una muestra de voz masculina y una femenina, a las cuales se aplica un filtro pasa–banda dentro del rango típico de frecuencias de cada género (80–400 Hz para hombres y 150–500 Hz para mujeres) con el fin de eliminar componentes de ruido no deseados.
+Posteriormente, se evalúan las variaciones temporales y de amplitud de las señales de voz mediante el cálculo del Jitter (fluctuación en la frecuencia fundamental entre ciclos consecutivos) y el Shimmer (variación en la amplitud pico a pico).
+### Diagrama flujo 
+
+
+### Diseño del filtro pasa banda para hombres
+
+!(PB HOMBRE)[]
+
+### Diseño del filtro pasa banda para mujeres
+
+!(PB MUJER)[]
+
+### Código filtro pasabanda
+
+```python
+import numpy as np
+import librosa
+import matplotlib.pyplot as plt
+from scipy.signal import butter, filtfilt, find_peaks
+
+# --- 1. CARGA DEL ARCHIVO Y SEGMENTACIÓN ---
+archivo = 'Tomas.m4a.wav'  # <--- CAMBIA ESTO por el nombre de tu archivo
+fs = 44100
+t_inicio, t_fin = 2.3, 2.8  # Intervalo de 0.5 segundos
+
+# Cargamos el audio completo primero para definir 'y_full'
+try:
+    y_full, _ = librosa.load(archivo, sr=fs, mono=True)
+    print(" Archivo cargado correctamente.")
+except Exception as e:
+    print(f" Error al cargar el archivo: {e}")
+    y_full = None
+
+if y_full is not None:
+    start_sample = int(t_inicio * fs)
+    end_sample = int(t_fin * fs)
+    y_segmento = y_full[start_sample:end_sample]
+
+    # --- 2. FILTRO BUTTERWORTH ORDEN 3 ---
+    nyq = 0.5 * fs
+    low, high = 80 / nyq, 400 / nyq
+    b, a = butter(3, [low, high], btype='bandpass')
+
+    y_filtrada = filtfilt(b, a, y_segmento)
+    y_norm = y_filtrada / np.max(np.abs(y_filtrada))
+
+    # --- 3. DETECCIÓN DE PICOS ROBUSTA ---
+    distancia_min = int(fs / 180)
+    altura_min = 0.5
+    prominencia_min = 0.2
+
+    picos, _ = find_peaks(y_norm,
+                          distance=distancia_min,
+                          height=altura_min,
+                          prominence=prominencia_min)
+
+    # --- 4. CÁLCULOS ---
+    tiempos_picos = (picos + start_sample) / fs
+    if len(picos) > 2:
+        Ti = np.diff(tiempos_picos)
+        f0_real = 1 / np.mean(Ti)
+        jitter_rel = (np.mean(np.abs(np.diff(Ti))) / np.mean(Ti)) * 100
+
+        # --- 5. GRÁFICA ---
+        plt.figure(figsize=(15, 6))
+        t_eje = np.linspace(t_inicio, t_fin, len(y_norm))
+
+        plt.plot(t_eje, y_norm, color='teal', label='Señal Filtrada')
+        plt.plot(t_eje[picos], y_norm[picos], "ro", markersize=8, label='Picos detectados')
+
+        plt.title(f'Análisis 0.5s | F0: {f0_real:.2f} Hz | Jitter: {jitter_rel:.4f}%')
+        plt.xlabel('Tiempo (segundos)')
+        plt.ylabel('Amplitud Normalizada')
+
+        # MOSTRAR TODO EL RANGO (2.3 a 2.8)
+        plt.xlim(t_inicio, t_fin+0.1)
+
+        plt.legend()
+        plt.grid(True, alpha=0.3)
+        plt.show()
+
+        print(f"Resultados: F0 = {f0_real:.2f} Hz, Jitter = {jitter_rel:.4f}%")
+
+        # --- CÁLCULO DE PARÁMETROS SOLICITADOS ---
+
+# 1. Calcular los periodos Ti (en segundos)
+# tiempos_picos ya contiene la ubicación en tiempo de cada punto rojo
+Ti = np.diff(tiempos_picos) 
+
+# 2. Calcular el Jitter Absoluto (Promedio de las diferencias entre periodos)
+# np.diff(Ti) nos da (T2-T1), (T3-T2), etc.
+jitter_abs = np.mean(np.abs(np.diff(Ti)))
+
+# 3. Calcular el Jitter Relativo (%)
+periodo_promedio = np.mean(Ti)
+jitter_rel = (jitter_abs / periodo_promedio) * 100
+
+# --- MOSTRAR RESULTADOS PARA EL INFORME ---
+print(f"{' CÁLCULOS DE JITTER ':=^40}")
+print(f"Primeros 5 periodos (Ti): {Ti[:5]} segundos")
+print(f"Número total de periodos: {len(Ti)}")
+print("-" * 40)
+print(f"JITTER ABSOLUTO: {jitter_abs:.6f} segundos")
+print(f"JITTER RELATIVO: {jitter_rel:.4f} %")
+print(f"{'':=^40}")
+
+```
+
