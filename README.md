@@ -602,6 +602,42 @@ SHIMMER RELATIVO: 5.7470 %
 | **Hombre ** | 0.000045 | 0.5472% | 0.4989 | 5.7470% |
 | **Mujer ** | 0.064180 | 157.6787% | 1.3133 | 16.0415% |
 
+## Análisis de Calidad de la Señal y Relación Señal-Ruido (SNR FILTRADA)
+
+```python
+# CALCULO DE SNR POST-FILTRADO (VALIDACIÓN FINAL)
+import numpy as np
+import librosa
+
+# 1. Ventaneo de la señal filtrada (20ms con traslape de 10ms)
+frame_length = int(0.02 * fs)
+hop_length = int(0.01 * fs)
+frames_f = librosa.util.frame(x_filtrada, frame_length=frame_length, hop_length=hop_length).T
+
+# 2. Energía por ventana (usando float64 para evitar desbordamientos)
+energia_f = np.sum(frames_f.astype(np.float64)**2, axis=1)
+
+# 3. Clasificación de Voz y Ruido (Umbral: Percentil 40)
+umbral_f = np.percentile(energia_f, 40)
+segmentos_voz = frames_f[energia_f >= umbral_f]
+segmentos_ruido = frames_f[energia_f < umbral_f]
+
+# 4. Cálculo de Potencia Media y SNR Final
+P_voz = np.mean(segmentos_voz**2)
+P_ruido = np.mean(segmentos_ruido**2)
+
+# Ecuación: SNR = 10 * log10(Potencia_Señal / Potencia_Ruido)
+snr_filtrado = 10 * np.log10((P_voz + 1e-10) / (P_ruido + 1e-10))
+
+print(f"SNR de la señal filtrada: {snr_filtrado:.2f} dB")
+```
+Una vez aplicada la etapa de filtrado digital, es imperativo cuantificar la mejora en la calidad de la señal. Para ello, se realiza un re-segmentado de la señal filtrada en ventanas de 20 ms con un traslape del 50%. Utilizando un umbral de energía basado en el percentil 40, se reclasifican los segmentos de voz y ruido residual para calcular el SNR final. Este procedimiento permite validar matemáticamente la reducción de ruido e interferencias lograda por el filtro Butterworth.
+| Sujeto | Género | SNR Original | SNR Filtrado |
+| :--- | :--- | :---: | :---: |
+| **Hombre  ** | **Masculino** | **19.49 dB** | **24.50 dB** |
+| **Mujer ** | **Femenino** | **20.27 dB** | **25.35 dB** |
+
+
 ## PARTE C 
 
 # 1. Registro de Adquisición
