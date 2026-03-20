@@ -616,3 +616,5 @@ SHIMMER RELATIVO: 5.7470 %
 | Condiciones ambientales     | Controladas                                | Sin ruido significativo en la grabación           |
 | Calidad general             | Buena                                      | Señal sin saturación, adecuada para análisis      |
 
+Las grabaciones se realizaron en condiciones controladas, obteniendo una buena calidad de señal sin presencia significativa de ruido ambiental ni saturación. Se evidenció variabilidad en la duración y en la amplitud de las muestras, lo cual puede atribuirse a diferencias en la intensidad vocal y en la ejecución de cada hablante. Con el fin de mantener cierta homogeneidad en la adquisición, la distancia al micrófono se mantuvo aproximadamente constante en 10 cm desde la fuente de emisión. Adicionalmente, se seleccionaron segmentos específicos de la señal y se aplicó un filtrado pasa-banda para mejorar la calidad del análisis y la extracción de características.
+
