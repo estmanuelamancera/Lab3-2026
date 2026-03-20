@@ -267,6 +267,7 @@ Finalmente, los valores calculados para cada grabación se organizan en una tabl
 En esta sección se realiza un análisis detallado de la estabilidad de la voz a partir de las grabaciones obtenidas en la Parte A. Se selecciona una muestra de voz masculina y una femenina, a las cuales se aplica un filtro pasa–banda dentro del rango típico de frecuencias de cada género (80–400 Hz para hombres y 150–500 Hz para mujeres) con el fin de eliminar componentes de ruido no deseados.
 Posteriormente, se evalúan las variaciones temporales y de amplitud de las señales de voz mediante el cálculo del Jitter (fluctuación en la frecuencia fundamental entre ciclos consecutivos) y el Shimmer (variación en la amplitud pico a pico).
 ### Diagrama flujo 
+![Infografía de periódico moderno ordenado colorido (1)](https://github.com/user-attachments/assets/fcf2b43d-49e2-4ff2-a347-d251d2542a89)
 
 
 ### Diseño del filtro pasa banda para hombres
@@ -600,4 +601,7 @@ SHIMMER RELATIVO: 5.7470 %
 | :--- | :---: | :---: | :---: | :---: |
 | **Hombre ** | 0.000045 | 0.5472% | 0.4989 | 5.7470% |
 | **Mujer ** | 0.064180 | 157.6787% | 1.3133 | 16.0415% |
+
+## PARTE C 
+
 
