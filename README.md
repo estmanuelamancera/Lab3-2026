@@ -626,4 +626,26 @@ Se observó que la frecuencia fundamental en la voz masculina es menor en compar
 | **Hombre ** | 0.000045 | 0.5472% | 0.4989 | 5.7470% |
 | **Mujer ** | 0.064180 | 157.6787% | 1.3133 | 16.0415% |
 
+# ¿Qué otras diferencias notan en términos de brillo, media o intensidad?
+En términos de brillo, frecuencia media, mediana e intensidad, se observan diferencias entre las señales de voz analizadas. La voz femenina presenta un mayor brillo, lo cual está asociado a una mayor concentración de energía en altas frecuencias, en concordancia con su mayor frecuencia fundamental. Por el contrario, la voz masculina muestra un espectro dominado por componentes de baja frecuencia, lo que se traduce en un menor brillo.
+
+En relación con la frecuencia media y la mediana espectral, se espera que ambas sean mayores en la voz femenina, debido a la mayor presencia de componentes de alta frecuencia. Esto indica que la energía de la señal femenina está distribuida hacia frecuencias más elevadas, mientras que en la voz masculina se concentra en rangos más bajos, reflejando diferencias fisiológicas en la producción vocal.
+
+En cuanto a la intensidad, esta no presenta una diferencia claramente definida entre ambos casos, ya que depende en gran medida de la forma de emisión durante la grabación. No obstante, el análisis del shimmer evidencia variaciones en la amplitud de la señal; en particular, la señal femenina presenta valores elevados, lo que sugiere una mayor inestabilidad en la amplitud. Sin embargo, estos resultados pueden estar influenciados por el proceso de detección de picos, lo cual afecta la estimación precisa de este parámetro.
+
+# Conclusiones sobre el comportamiento de la voz en hombres y mujeres a partir de los análisis realizados.
+
+A partir de los resultados obtenidos, se evidencia que la señal masculina presenta valores de jitter (0.5472%) y shimmer (5.7470%) dentro de rangos cercanos a los esperados para una voz estable, lo que indica una vibración relativamente uniforme tanto en periodo como en amplitud. En contraste, la señal femenina muestra valores significativamente elevados (jitter de 157.6787% y shimmer de 16.0415%), los cuales no son consistentes con el comportamiento fisiológico normal de la voz humana.
+
+Esta discrepancia sugiere que el cálculo de los parámetros en la señal femenina se vio afectado por el proceso de detección de picos, probablemente debido a una selección inadecuada de parámetros frente a una frecuencia fundamental más alta. Esto resalta la sensibilidad de los métodos de análisis temporal ante cambios en las características de la señal.
+
+En términos prácticos, los resultados confirman que la estimación de parámetros como jitter y shimmer depende críticamente del preprocesamiento, particularmente del filtrado y la detección de ciclos. Por lo tanto, es necesario adaptar los parámetros del algoritmo según el tipo de voz analizada para garantizar mediciones confiables.
+# Importancia clínica del jitter y shimmer en el análisis de la voz.
+Los parámetros jitter y shimmer son fundamentales en el análisis clínico de la voz, ya que permiten evaluar la estabilidad de la vibración de las cuerdas vocales desde un enfoque cuantitativo. El jitter mide las variaciones ciclo a ciclo en la frecuencia, mientras que el shimmer cuantifica las variaciones en la amplitud de la señal vocal. Estos parámetros son ampliamente utilizados en la práctica clínica para la detección y caracterización de trastornos vocales.
+
+Diversos estudios han demostrado que valores elevados de jitter y shimmer están asociados con alteraciones en la calidad vocal, como disfonías funcionales y patologías laríngeas. En particular, el jitter ha sido identificado como un indicador sensible para diferenciar tipos de trastornos vocales [1]. Asimismo, el análisis conjunto de jitter y shimmer ha mostrado utilidad para identificar pacientes con disfonía y evaluar la efectividad de tratamientos terapéuticos [2].
+
+Además, estos parámetros presentan relevancia en el análisis de enfermedades neurológicas. En patologías como la enfermedad de Parkinson, se han observado variaciones significativas en jitter y shimmer, lo que permite utilizarlos como biomarcadores en el monitoreo de la progresión de la enfermedad [3]. Sin embargo, es importante considerar que estos parámetros pueden verse afectados por condiciones de medición como la intensidad vocal, por lo que se requiere un adecuado control experimental para garantizar resultados confiables [4].
+
+En conjunto, el jitter y el shimmer constituyen herramientas esenciales en el análisis acústico de la voz, proporcionando información objetiva sobre la estabilidad fonatoria y contribuyendo tanto al diagnóstico como al seguimiento de alteraciones vocales.
 
