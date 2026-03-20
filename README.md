@@ -161,6 +161,49 @@ En esta sección se realiza el procesamiento de cada una de las grabaciones de v
     plt.show()
 ```
 Este bloque genera la representación de cada señal de voz en el dominio del tiempo. La gráfica muestra cómo varía la amplitud de la señal a lo largo del tiempo, lo cual permite observar la forma de onda de la voz, su duración aproximada y posibles pausas o irregularidades en la grabación.
+## Análisis de Calidad de la Señal y Relación Señal-Ruido (SNR)
+```python
+frame_length = int(0.02 * fs)
+hop_length = int(0.01 * fs)
+
+frames = []
+energia = []
+
+for i in range(0, len(x) - frame_length, hop_length):
+    frame = x[i:i+frame_length]
+    frames.append(frame)
+    energia.append(np.sum(frame**2))
+
+frames = np.array(frames)
+energia = np.array(energia)
+
+# --------------------------------------------
+# Separación señal / ruido
+# --------------------------------------------
+umbral = np.percentile(energia, 40)
+
+ruido_frames = energia < umbral
+senal_frames = energia >= umbral
+
+ruido = frames[ruido_frames].flatten()
+senal = frames[senal_frames].flatten()
+
+# --------------------------------------------
+# SNR
+# --------------------------------------------
+snr = calcular_snr(senal, ruido)
+print(f"SNR: {snr:.2f} dB")
+```
+Para el cálculo del SNR, se implementó un algoritmo basado en segmentación temporal de la señal, utilizando ventanas de 20 ms con un solapamiento del 50%. Para cada ventana, se estimó la energía como criterio de discriminación entre actividad vocal y ruido de fondo. Se definió un umbral adaptativo a partir del percentil 40 de la distribución de energía, lo que permitió clasificar automáticamente las tramas en segmentos de señal (alta energía) y ruido (baja energía). Finalmente, se calculó la relación señal-ruido (SNR) mediante la razón logarítmica entre las potencias promedio de la señal y del ruido, expresada en decibeles (dB).
+
+| Sujeto | Género | SNR Original (Sin filtrar) | Clasificación de Calidad |
+| :--- | :---: | :---: | :--- |
+| Audio 1 (Tomas) | Masculino | **19.49 dB** | Óptima |
+| Audio 2 | Masculino | **18.42 dB** | Buena |
+| Audio 3 | Masculino | **18.40 dB** | Buena |
+| Audio 4 | Femenino | **17.66 dB** | Buena |
+| Audio 5 | Femenino | **14.83 dB** | Aceptable |
+| Audio 6 | Femenino | **20.27 dB** | Excelente |
 ## Gráfica del espectro de frecuencias
 ```
 # -----------------------------------------------------
