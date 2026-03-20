@@ -259,10 +259,10 @@ Finalmente, los valores calculados para cada grabación se organizan en una tabl
 <img width="1078" height="807" alt="image" src="https://github.com/user-attachments/assets/f2161cfb-5222-4a0a-8b00-b6a4ba47d0c0" />
 
 
-# TABLA RESULTADOS PARTE A
+## TABLA RESULTADOS PARTE A
 <img width="800" height="700" alt="image" src="https://github.com/estmanuelamancera/Lab3-2026/blob/main/tabla1.png" />
 
-### PARTE B
+# PARTE B
 
 En esta sección se realiza un análisis detallado de la estabilidad de la voz a partir de las grabaciones obtenidas en la Parte A. Se selecciona una muestra de voz masculina y una femenina, a las cuales se aplica un filtro pasa–banda dentro del rango típico de frecuencias de cada género (80–400 Hz para hombres y 150–500 Hz para mujeres) con el fin de eliminar componentes de ruido no deseados.
 Posteriormente, se evalúan las variaciones temporales y de amplitud de las señales de voz mediante el cálculo del Jitter (fluctuación en la frecuencia fundamental entre ciclos consecutivos) y el Shimmer (variación en la amplitud pico a pico).
