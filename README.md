@@ -604,4 +604,15 @@ SHIMMER RELATIVO: 5.7470 %
 
 ## PARTE C 
 
+1. Registro de Adquisición
+   
+| Parámetro                    | Valor/Descripción                          | Observaciones                                      |
+|-----------------------------|--------------------------------------------|---------------------------------------------------|
+| Frecuencia de muestreo (Fs) | 44100 Hz                                   | Definida en el código con librosa.load()          |
+| Resolución                  | 16 bits (formato WAV)                      | Estándar en audio digital                         |
+| Canales                     | Mono (1 canal)                             | Señal convertida a mono (mono=True)               |
+| Duración analizada          | 0.5 segundos (2.3 s – 2.8 s)               | Segmento seleccionado para análisis               |
+| Duración total              | ~3 segundos                                | Depende de la grabación original                  |
+| Condiciones ambientales     | Controladas                                | Sin ruido significativo en la grabación           |
+| Calidad general             | Buena                                      | Señal sin saturación, adecuada para análisis      |
 
