@@ -604,7 +604,7 @@ SHIMMER RELATIVO: 5.7470 %
 
 ## PARTE C 
 
-1. Registro de Adquisición
+# 1. Registro de Adquisición
    
 | Parámetro                    | Valor/Descripción                          | Observaciones                                      |
 |-----------------------------|--------------------------------------------|---------------------------------------------------|
@@ -617,10 +617,13 @@ SHIMMER RELATIVO: 5.7470 %
 | Calidad general             | Buena                                      | Señal sin saturación, adecuada para análisis      |
 
 Las grabaciones se realizaron en condiciones controladas, obteniendo una buena calidad de señal sin presencia significativa de ruido ambiental ni saturación. Se evidenció variabilidad en la duración y en la amplitud de las muestras, lo cual puede atribuirse a diferencias en la intensidad vocal y en la ejecución de cada hablante. Con el fin de mantener cierta homogeneidad en la adquisición, la distancia al micrófono se mantuvo aproximadamente constante en 10 cm desde la fuente de emisión. Adicionalmente, se seleccionaron segmentos específicos de la señal y se aplicó un filtrado pasa-banda para mejorar la calidad del análisis y la extracción de características.
-2. Análisis Comparativo: Voces Masculinas vs Femeninas
+# ¿Qué diferencias se observan en la frecuencia fundamental?
+Se observó que la frecuencia fundamental en la voz masculina es menor en comparación con la voz femenina, lo cual coincide con el comportamiento esperado debido a diferencias fisiológicas en las cuerdas vocales. Sin embargo, en el caso de la señal femenina, la estimación de los parámetros presenta inconsistencias asociadas al proceso de detección de picos, lo que afecta la precisión de los cálculos derivados.
+# 2. Análisis Comparativo: Voces Masculinas vs Femeninas
 
 | Sujeto | Jitter Absoluto (s) | Jitter Relativo (%) | Shimmer Absoluto (dB) | Shimmer Relativo (%) |
 | :--- | :---: | :---: | :---: | :---: |
 | **Hombre ** | 0.000045 | 0.5472% | 0.4989 | 5.7470% |
 | **Mujer ** | 0.064180 | 157.6787% | 1.3133 | 16.0415% |
+
 
