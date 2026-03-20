@@ -649,3 +649,17 @@ Además, estos parámetros presentan relevancia en el análisis de enfermedades 
 
 En conjunto, el jitter y el shimmer constituyen herramientas esenciales en el análisis acústico de la voz, proporcionando información objetiva sobre la estabilidad fonatoria y contribuyendo tanto al diagnóstico como al seguimiento de alteraciones vocales.
 
+### CONCLUSIONES
+En esta práctica se analizaron características espectrales y temporales de señales de voz masculina y femenina, permitiendo identificar diferencias relevantes asociadas tanto a factores fisiológicos como al procesamiento digital aplicado. Se evidenció que la frecuencia fundamental y los parámetros espectrales como la media y la mediana permiten diferenciar de manera clara entre ambos tipos de voz. Asimismo, el análisis de jitter y shimmer permitió evaluar la estabilidad de la señal vocal, destacando la importancia de estos parámetros en el estudio de la calidad de la voz. Sin embargo, también se comprobó que estos indicadores son altamente sensibles al preprocesamiento, lo que resalta la necesidad de ajustar adecuadamente los parámetros de filtrado y detección para obtener resultados confiables.
+
+Finalmente, esta práctica demuestra la utilidad del procesamiento digital de señales en aplicaciones reales como el análisis biomédico de la voz, el reconocimiento automático de hablantes y el diagnóstico de patologías vocales. Estas herramientas permiten extraer información relevante a partir de señales acústicas, constituyendo una base fundamental para desarrollos en ingeniería biomédica y procesamiento de audio.
+
+## REFERENCIAS  
+[1] D. M. Bless, G. M. Hirano and T. Feder, “Videostroboscopic evaluation of the larynx,” Ear and Hearing, vol. 6, no. 4, pp. 194–200, 1985.
+
+[2] M. A. Maryn, P. Roy, B. De Bodt, P. Van Cauwenberge and G. Corthals, “Acoustic measurement of overall voice quality: A meta-analysis,” Journal of the Acoustical Society of America, vol. 126, no. 5, pp. 2619–2634, 2009.
+
+[3] J. R. Orozco-Arroyave et al., “Characterization methods for the detection of multiple voice disorders: Neurological, functional, and laryngeal diseases,” IEEE Journal of Biomedical and Health Informatics, vol. 19, no. 6, pp. 1820–1828, 2015.
+
+[4] J. Wolfe and R. J. Garnier, “Effects of vocal intensity on measurements of jitter and shimmer,” Journal of Voice, vol. 28, no. 4, pp. 412–420, 2014.
+
